@@ -16,6 +16,11 @@ jobs:
   deploy:
     if: ${{ !github.event.release.prerelease }}
     runs-on: ubuntu-latest
+    # The Cloudflare secrets are environment secrets, so the job must name the
+    # environment or they arrive empty. Its deployment rules must allow tags (v*).
+    environment:
+      name: production
+      url: https://timradtke.dev
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v6

@@ -1,0 +1,14 @@
+// Cloudflare Worker that only serves the built site in ./dist. There is no
+// `main` script, so every request is a static asset request (free, no code runs).
+{
+  "name": "timradtke-dev",
+  "compatibility_date": "2026-10-17",
+  "assets": {
+    "directory": "./dist",
+    // Unknown paths get dist/404.html with a 404 status. Routing uses the URL
+    // hash, which never reaches the server, so no SPA fallback is needed.
+    "not_found_handling": "404-page"
+  },
+  // Attaches the Worker to the domain and creates its DNS record and certificate.
+  "routes": [{ "pattern": "timradtke.dev", "custom_domain": true }]
+}
