@@ -1,0 +1,72 @@
+<!doctype html>
+<!--
+        T I M   R A D T K E
+
+        Everything here is hand-written. No framework, no build step you can't read,
+        no dependencies at runtime. This page is built to arrive in one network
+        round trip (~14kb gzipped) and to render before any JavaScript runs.
+
+        If you're reading the source: hi. That's usually a good sign.
+        There are a few more things to find. Try the console.
+-->
+<html lang="en" data-theme="gruvbox">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Tim Radtke — Senior Full-Stack Engineer · Data Systems</title>
+<meta name="description" content="Tim Radtke, senior full-stack engineer. I build data systems that stay up, scale, and waste nothing.">
+<link rel="canonical" href="https://example.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tim Radtke — Senior Full-Stack Engineer">
+<meta property="og:description" content="I build data systems that stay up, scale, and waste nothing. This whole site is under 14kb gzipped.">
+<meta property="og:url" content="https://example.com/">
+<meta property="og:image" content="https://example.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext x='2' y='13' font-family='monospace' font-size='12' fill='%23af3a03'%3Etr%3C/text%3E%3C/svg%3E">
+<script>try{var m=localStorage.getItem('mode');if(m!=='light'&&m!=='dark')m=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.dataset.mode=m}catch(e){}</script>
+<link rel="stylesheet" href="/src/style.css">
+<!--jsonld-->
+<!--data-->
+</head>
+<body>
+<header class="top">
+  <a class="me" href="#tile-hero">Tim Radtke</a>
+  <nav aria-label="Primary">
+    <ul>
+      <!--nav-->
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="bento" aria-label="Tim Radtke, at a glance">
+    <article class="tile tile--hero" id="tile-hero">
+      <p class="label">Senior full-stack engineer · AMOpportunities</p>
+      <h1>I build data systems that stay up, scale, and waste nothing.</h1>
+      <p class="muted">Remote · backend by strength, frontend and agentic tooling by trade.</p>
+    </article>
+
+    <!--tiles-->
+  </section>
+</main>
+
+<dialog id="detail">
+  <div id="detail-body"></div>
+  <footer><button class="close" type="button" data-close>Close</button></footer>
+</dialog>
+
+<button class="bulb" type="button" aria-label="Toggle light/dark mode">
+  <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+    <path class="bulb__glow" d="M12 2a5.6 5.6 0 0 0-3.3 10.2c.4.3.7.7.7 1.2v.5h5.2v-.5c0-.5.3-.9.7-1.2A5.6 5.6 0 0 0 12 2z"/>
+    <path class="bulb__base" d="M9.7 14.6h4.6M10.1 16.4h3.8M10.6 18.2h2.8"/>
+    <g class="bulb__chain">
+      <path class="bulb__cord" d="M12 19.4v1.8"/>
+      <circle class="bulb__knob" cx="12" cy="22.4" r="1.3"/>
+    </g>
+  </svg>
+</button>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

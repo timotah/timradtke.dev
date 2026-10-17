@@ -1,0 +1,14 @@
+/* TEAM */
+  Who: Tim Radtke
+  Role: Senior full-stack engineer
+  Focus: data systems — availability, capacity, efficiency
+  Contact: tim@example.com
+  GitHub: https://github.com/
+  LinkedIn: https://www.linkedin.com/
+
+/* SITE */
+  Built by: hand
+  Stack: one HTML file, vanilla JS, Vite as the bundler
+  Size: under 14kb gzipped, on purpose
+  Doctype: html
+  Language: English

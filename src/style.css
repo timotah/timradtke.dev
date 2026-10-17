@@ -1,0 +1,505 @@
+/*
+  Gruvbox light + dark (Article IX). Light is the reference design: a beige page
+  with lighter tiles. Dark mirrors it with Gruvbox's dark backgrounds.
+  The only place colors are defined. Everything else uses the variables.
+*/
+:root {
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --radius: 10px;
+
+  --bg: #fbf1c7;
+  --tile: #f9f5d7;
+  --tile-hi: #f2e5bc;
+  --fg: #3c3836;
+  --muted: #665c54;
+  --line: #e0d3a8;
+  --accent: #af3a03;
+  --accent-2: #427b58;
+  --focus: #b57614;
+  --shadow: 0 1px 0 0 rgb(60 56 54 / 4%);
+}
+
+:root[data-mode='dark'] {
+  --bg: #282828;
+  --tile: #32302f;
+  --tile-hi: #3c3836;
+  --fg: #ebdbb2;
+  --muted: #a89984;
+  --line: #45403d;
+  --accent: #fe8019;
+  --accent-2: #8ec07c;
+  --focus: #fabd2f;
+  --shadow: 0 1px 0 0 rgb(0 0 0 / 40%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0 auto;
+  padding: var(--s5);
+  max-width: 1160px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s5);
+  background: var(--bg);
+  color: var(--fg);
+  font: 1rem/1.55 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--tile);
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.mono,
+.label,
+.chip {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.label {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* Navbar */
+.top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s4);
+  flex-wrap: wrap;
+}
+
+.me {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.top ul {
+  display: flex;
+  gap: var(--s4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+/* Bento. One column and scrolling by default (Article VII.4). */
+.bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s3);
+}
+
+.tile {
+  background: var(--tile);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s4);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  min-height: 0;
+  overflow: auto;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+
+.tile h1,
+.tile h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.tile h1 {
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.tile p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.tile--hero {
+  gap: var(--s3);
+  justify-content: center;
+}
+
+/* Hover is the only thing that lights a tile.
+   Why not focus too: when a dialog closes, the browser returns focus to the link
+   that opened it (required, so keyboard users keep their place). Any focus-driven
+   tile style then reads as "this tile is still open" while the pointer is hovering
+   a different tile. That was the bug. Keyboard users aren't left without a cue:
+   the focused link shows the standard :focus-visible ring, which is a focus
+   indicator rather than an imitation of hover. See the drafted amendment to
+   Article VIII.2. */
+.tile--open:hover {
+  background: var(--tile-hi);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* The navbar -> tile link (Article VIII.2): hovering a navbar item fills its tile. */
+body:has(.top nav a[data-open='experience']:hover) .tile--experience,
+body:has(.top nav a[data-open='focus']:hover) .tile--focus,
+body:has(.top nav a[data-open='skills']:hover) .tile--skills,
+body:has(.top nav a[data-open='now']:hover) .tile--now,
+body:has(.top nav a[data-open='this-site']:hover) .tile--this-site {
+  background: var(--tile-hi);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1) var(--s2);
+}
+
+.chip {
+  font-size: 0.72rem;
+  padding: 2px var(--s1);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--muted);
+}
+
+.more {
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.bytes {
+  font-family: ui-monospace, monospace;
+  color: var(--accent-2);
+}
+
+/* A screen with room for a real bento (Article VII.4). */
+@media (min-width: 900px) and (min-height: 700px) {
+  .bento {
+    height: calc(100dvh - 96px);
+    gap: var(--s2);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      'hero hero exp exp'
+      'hero hero skills site'
+      'focus now skills contact';
+  }
+
+  .tile--hero {
+    grid-area: hero;
+  }
+  .tile--experience {
+    grid-area: exp;
+  }
+  .tile--focus {
+    grid-area: focus;
+  }
+  .tile--skills {
+    grid-area: skills;
+  }
+  .tile--this-site {
+    grid-area: site;
+  }
+  .tile--now {
+    grid-area: now;
+  }
+  .tile--contact {
+    grid-area: contact;
+  }
+}
+
+/* Shorter screens get a slightly tighter bento so all seven tiles still fit
+   without clipping (Article VII.4). Below this, the tiles stack and scroll. */
+@media (min-width: 900px) and (min-height: 700px) and (max-height: 820px) {
+  .bento {
+    gap: var(--s1);
+  }
+
+  .tile {
+    padding: var(--s3);
+  }
+
+  .tile p {
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+
+  .tile--focus p {
+    font-size: 0.8rem;
+    line-height: 1.32;
+  }
+}
+
+/* Light bulb. Always visible (Article IX.2). The chain hangs under the bulb and
+   swings when you reach for the switch, unless motion is reduced. */
+.bulb {
+  position: fixed;
+  right: var(--s4);
+  bottom: var(--s4);
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--tile);
+  cursor: pointer;
+  line-height: 0;
+  box-shadow: var(--shadow);
+}
+
+.bulb__glow {
+  fill: var(--focus);
+  filter: drop-shadow(0 0 4px var(--focus));
+  transition: fill 0.2s, filter 0.2s;
+}
+
+:root[data-mode='dark'] .bulb__glow {
+  fill: var(--muted);
+  filter: none;
+}
+
+.bulb__base,
+.bulb__cord,
+.bulb__knob {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.bulb__chain {
+  transform-origin: 12px 19px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bulb:hover .bulb__chain,
+  .bulb:focus-visible .bulb__chain {
+    animation: bulb-swing 0.7s ease-in-out;
+  }
+}
+
+@keyframes bulb-swing {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  30% {
+    transform: rotate(7deg);
+  }
+  60% {
+    transform: rotate(-5deg);
+  }
+  80% {
+    transform: rotate(2deg);
+  }
+}
+
+/* Dialog. Uses the native element, so focus and Esc come for free (Article VIII.4). */
+dialog {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--tile);
+  color: var(--fg);
+  padding: var(--s5);
+  max-width: 62ch;
+  max-height: 90dvh;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+/* Scoped to [open] so a closed dialog keeps the browser's `display: none`. */
+dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+dialog::backdrop {
+  background: rgb(40 40 40 / 55%);
+}
+
+/* A short, cheap entrance. Animations run when display changes from none, so no
+   @starting-style needed, and it degrades to an instant open (Article V.6). */
+@media (prefers-reduced-motion: no-preference) {
+  dialog[open] {
+    animation: dialog-in 0.16s ease-out;
+  }
+
+  dialog[open]::backdrop {
+    animation: backdrop-in 0.16s ease-out;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+dialog h2 {
+  margin: 0 0 var(--s3);
+  font-size: 1.3rem;
+}
+
+dialog p,
+dialog li {
+  margin: 0 0 var(--s2);
+}
+
+dialog footer {
+  margin-top: var(--s4);
+}
+
+.close {
+  font: inherit;
+  padding: var(--s2) var(--s3);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--tile-hi);
+  color: inherit;
+  cursor: pointer;
+}
+
+/* On phones the detail view fills the screen, so it reads like a page instead of
+   a box, while keeping the instant open from Article VIII.4. The close button
+   sticks to the bottom so it's always reachable in long content. */
+@media (max-width: 640px) {
+  dialog {
+    inset: 0;
+    width: auto;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    padding: var(--s4) var(--s4) var(--s5);
+  }
+
+  dialog h2 {
+    font-size: 1.5rem;
+  }
+
+  dialog footer {
+    position: sticky;
+    bottom: 0;
+    margin-top: auto;
+    padding-top: var(--s4);
+    background: linear-gradient(transparent, var(--tile) 40%);
+  }
+
+  .close {
+    width: 100%;
+    padding: var(--s3);
+    font-size: 1rem;
+  }
+}
+
+/* Print: the resume (Article X). The bento and the extras stay on screen. */
+@media print {
+  body {
+    padding: 0;
+    gap: 0;
+    background: #fff;
+    color: #000;
+  }
+
+  .top,
+  .bulb,
+  .bento,
+  dialog,
+  dialog[open] {
+    display: none;
+  }
+
+  .print {
+    display: block;
+  }
+
+  .print h1 {
+    font-size: 1.5rem;
+    margin: 0 0 var(--s1);
+  }
+
+  .print h3 {
+    margin: var(--s4) 0 var(--s1);
+    font-size: 1rem;
+  }
+
+  .print .job {
+    margin: 0 0 var(--s3);
+  }
+
+  .print .job strong {
+    display: block;
+  }
+
+  .print ul {
+    margin: 0;
+    padding-left: var(--s4);
+  }
+
+  .print a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+
+/* Motion is optional everywhere (Article XII.1). */
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .bulb__glow {
+    transition: none;
+  }
+
+  .tile--open:hover,
+  body:has(.top nav a[data-open]:hover) .tile {
+    transform: none;
+  }
+}

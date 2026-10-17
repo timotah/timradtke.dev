@@ -1,0 +1,169 @@
+{
+  "person": {
+    "name": "Tim Radtke",
+    "jobTitle": "Senior Full-Stack Engineer",
+    "worksFor": "AMOpportunities",
+    "location": "Remote",
+    "email": "tim@example.com",
+    "url": "https://example.com",
+    "knowsAbout": [
+      "Data systems",
+      "Availability",
+      "Capacity planning",
+      "Backend engineering",
+      "Frontend engineering",
+      "Agentic coding tools"
+    ],
+    "sameAs": ["https://github.com/", "https://www.linkedin.com/"]
+  },
+
+  "nav": [
+    { "label": "Experience", "href": "#experience", "id": "experience", "tile": true },
+    { "label": "Focus", "href": "#focus", "id": "focus", "tile": true },
+    { "label": "Skills", "href": "#skills", "id": "skills", "tile": true },
+    { "label": "Now", "href": "#now", "id": "now", "tile": true },
+    { "label": "This site", "href": "#this-site", "id": "this-site", "tile": true },
+    { "label": "Resume", "href": "/resume.pdf" },
+    { "label": "GitHub", "href": "https://github.com/", "external": true },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/", "external": true },
+    { "label": "Email", "href": "mailto:tim@example.com" }
+  ],
+
+  "tiles": [
+    {
+      "id": "experience",
+      "title": "Experience",
+      "lines": ["Senior full-stack engineer at AMOpportunities."],
+      "badges": ["AMOpportunities", "Senior"],
+      "dialog": "experience",
+      "more": "Full history"
+    },
+    {
+      "id": "focus",
+      "title": "Focus",
+      "lines": [
+        "Availability — keeping systems up, and making failures boring.",
+        "Capacity — knowing where the ceiling is before it's hit.",
+        "Efficiency — fewer resources for the same work."
+      ],
+      "dialog": "focus",
+      "more": "How I work"
+    },
+    {
+      "id": "skills",
+      "title": "Skills",
+      "lines": ["Backend, frontend, data, infrastructure, and agentic tooling."],
+      "badges": ["Backend", "Frontend", "Data", "Infra", "Agentic tools"],
+      "dialog": "skills",
+      "more": "Grouped detail"
+    },
+    {
+      "id": "this-site",
+      "title": "This site",
+      "lines": [
+        { "text": "This page is" }
+      ],
+      "badges": ["Vanilla JS", "No dependencies", "One round trip"],
+      "dialog": "this-site",
+      "more": "How it's built"
+    },
+    {
+      "id": "now",
+      "title": "Now",
+      "lines": ["What I'm building, learning, and reading right now."],
+      "dialog": "now",
+      "more": "More"
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "lines": [
+        { "text": "tim@example.com", "href": "mailto:tim@example.com" },
+        {
+          "links": [
+            { "text": "GitHub", "href": "https://github.com/", "external": true },
+            { "text": "LinkedIn", "href": "https://www.linkedin.com/", "external": true }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "dialogs": {
+    "experience": {
+      "title": "Experience",
+      "body": [
+        {
+          "list": [
+            "Senior Full-Stack Engineer · AMOpportunities — current. Backend-leaning; frontend, product, and agentic tooling alongside.",
+            "Earlier roles — replace this line with real history from your resume."
+          ]
+        },
+        "Full details are in the resume, and the resume is generated from this same file."
+      ]
+    },
+    "focus": {
+      "title": "How I work",
+      "body": [
+        {
+          "list": [
+            "Availability — I design for graceful failure: timeouts, retries, and load shedding so one bad dependency doesn't take the product down.",
+            "Capacity — I measure before I guess. Load tests, queue depth, and headroom you can see.",
+            "Efficiency — I treat compute and query cost as a feature. Smaller payloads, fewer round trips, cheaper queries."
+          ]
+        },
+        "This site is the same idea applied to a web page: 14kb, one round trip, nothing wasted."
+      ]
+    },
+    "skills": {
+      "title": "Skills",
+      "body": [
+        { "list": ["Backend — APIs, services, data modelling, queues. (fill in languages and frameworks)"] },
+        { "list": ["Frontend — accessible, fast interfaces in vanilla JS and in frameworks when they earn their weight."] },
+        { "list": ["Data — schemas, migrations, query performance, and the systems around them."] },
+        { "list": ["Infrastructure — deploys, observability, and the boring automation that keeps things up."] },
+        { "list": ["Agentic tooling — I work with AI coding tools daily, and I review everything they produce like any other commit."] }
+      ]
+    },
+    "this-site": {
+      "title": "This site",
+      "body": [
+        "One HTML file under 14kb gzipped, which is about what fits in a single TCP round trip. No framework, no runtime dependencies, no webfonts.",
+        "The bento is in the HTML from the first byte, so it renders before any JavaScript runs. The detail views are the only thing that needs JS.",
+        "Built with Vite, but the output is a single file. A build step fails if the page goes over budget."
+      ]
+    },
+    "now": {
+      "title": "Now",
+      "body": [
+        "Building: this site, and the data systems work that pays for it.",
+        "Learning: (fill in)",
+        "Reading: (fill in)"
+      ]
+    }
+  },
+
+  "resume": {
+    "name": "Tim Radtke",
+    "contact": "Remote · tim@example.com · github.com/ · linkedin.com/",
+    "summary": "Senior full-stack engineer focused on data systems: availability, capacity, and efficiency.",
+    "sections": [
+      {
+        "heading": "Experience",
+        "jobs": [
+          {
+            "title": "Senior Full-Stack Engineer",
+            "company": "AMOpportunities",
+            "dates": "Current",
+            "points": [
+              "Replace with real, specific outcomes once the numbers can be shared.",
+              "The site's copy and this resume read from the same file, so they never disagree."
+            ]
+          }
+        ]
+      },
+      { "heading": "Skills", "text": ["Backend engineering", "Frontend engineering", "Data systems", "Infrastructure"] },
+      { "heading": "Education", "text": "(fill in)" }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Tim Radtke's portfolio. Hand-written, under 14kb gzipped, one round trip.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/inline-assets.mjs && node scripts/build-404.mjs && node scripts/size.mjs",
+    "size": "node scripts/size.mjs"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
+  }
+}

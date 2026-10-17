@@ -1,0 +1,14 @@
+# Cloudflare response headers (Article XVI layout). Cloudflare-only; GitHub Pages
+# ignores this file. Nothing here affects the 14kb budget.
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/og.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/resume.pdf
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600
